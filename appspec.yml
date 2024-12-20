@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/release/
+hooks:
+  BeforeInstall:
+    - location: deploy-scripts/before_install.sh
+      timeout: 300
+
+  AfterInstall:
+  - location: deploy-scripts/after_install.sh
+    timeout: 300
+
+  ApplicationStart:
+    - location: deploy-scripts/switch_version.sh
+      timeout: 300

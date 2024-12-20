@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Pre-build phase - nothing to do here"
+  build:
+    commands:
+      - echo "Build started on `date`"
+      - echo "Fetching secrets from Secrets Manager"
+      - |
+          SECRET=$(aws secretsmanager get-secret-value --secret-id $SECRET_CLOUDFLARE --region $REGION --query SecretString --output text)
+          if [ $? -eq 0 ]; then
+            eval $(echo "$SECRET" | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]")
+            echo "Secrets loaded successfully."
+          else
+            echo "Failed to retrieve the secret."
+            exit 1
+          fi
+
+      # Purge the cache for a specific page on Cloudflare
+      - echo "Purging cache for ${URL_TO_PURGE} on Cloudflare"
+      - |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/purge_cache" \
+          -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+          -H "Content-Type: application/json" \
+          --data "{\"files\":[\"${URL_TO_PURGE}\"]}"
+      - echo "Cache purged successfully for ${URL_TO_PURGE}."
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: '.'

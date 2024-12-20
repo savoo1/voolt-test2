@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.disable_scroll {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.scrolled-nav {
+  background-color: rgba(245, 245, 247, 0.5);
+  backdrop-filter: saturate(150%) blur(30px);
+}
+
+@media (max-width: 1023px) {
+  .active-nav div div:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .active-nav div div:nth-child(2) {
+    width: 28px;
+    transform: rotate(-45deg);
+    margin-top: -8px;
+  }
+  .active-nav div div:nth-child(3) {
+    transform: rotate(45deg);
+    margin-top: -8px;
+  }
+  .active-nav-list {
+    width: 100% !important;
+  }
+  .mobile-nav-list {
+    overflow: auto !important;
+    bottom: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .active-nav div div:nth-child(2) {
+    width: 22px;
+    margin-top: -6px;
+  }
+  .active-nav div div:nth-child(3) {
+    margin-top: -6px;
+  }
+}
+.tab {
+  border: 1px solid transparent;
+  transition: all 0.25s ease-in;
+}
+
+.active-tab-type1 {
+  background: #fff;
+  color: #0473C2;
+  box-shadow: 0px 39px 11px 0px rgba(0, 0, 0, 0), 0px 25px 10px 0px rgba(0, 0, 0, 0.01), 0px 14px 8px 0px rgba(0, 0, 0, 0.03), 0px 6px 6px 0px rgba(0, 0, 0, 0.04), 0px 2px 3px 0px rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 767px) {
+  .active-tab-type1 {
+    border: 1px solid #e4e4e7;
+    transition: all 0.25s ease-in;
+  }
+}
+
+@media (min-width: 1024px) {
+  .horizontal-content {
+    display: none !important;
+  }
+  .active-horizontal {
+    display: flex !important;
+  }
+}
+
+.active-horizontal-tab {
+  border: 1px solid #fff;
+  background: #eff7ff;
+  box-shadow: 0px 32px 9px 0px rgba(0, 0, 0, 0), 0px 20px 8px 0px rgba(0, 0, 0, 0.01), 0px 11px 7px 0px rgba(0, 0, 0, 0.03), 0px 5px 5px 0px rgba(0, 0, 0, 0.04), 0px 1px 3px 0px rgba(0, 0, 0, 0.05);
+  opacity: 1;
+}
+.active-horizontal-tab .tab-number {
+  border: 1px solid #0473C2;
+}
+.active-horizontal-tab .tab-number p {
+  color: #0473C2;
+}
+
+.active-horizontal-tab .tab-text p:first-child {
+  color: #0473C2;
+}
+.active-horizontal-tab .tab-text p:last-child {
+  color: #09090b;
+  display: block;
+}
+.active-horizontal-tab .stop-color {
+  stop-color: #0094ff;
+}
+.active-horizontal-tab .stroke-color {
+  stroke: #0094ff;
+}
+.active-horizontal-tab {
+  align-items: start;
+}
+
+.light-gradient {
+  background: linear-gradient(177deg, rgba(9, 9, 11, 0) 8.65%, #09090b 97.71%);
+}
+
+.custom-bg {
+  background: radial-gradient(62.11% 176.91% at -14.46% -43.21%, rgba(128, 0, 255, 0.1) 0%, rgba(128, 0, 255, 0) 100%), radial-gradient(69.76% 205.18% at -20.51% 7.5%, rgba(255, 210, 10, 0.1) 0%, rgba(255, 210, 10, 0) 100%), radial-gradient(70% 147.54% at 112.26% 137.93%, rgba(0, 148, 255, 0.08) 0%, rgba(0, 148, 255, 0) 100%), #f9fafb;
+}
+@media (max-width: 479px) {
+  .line-down {
+    position: relative;
+  }
+  .line-down:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 80px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(0, 212, 255, 0) 100%);
+  }
+}
+.tab-content {
+  display: none;
+}
+.active-content {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .active-dd-tab .dropdown {
+    display: block;
+  }
+  .active-dd-tab .dropdown-tag {
+    color: #0473C2;
+  }
+  .active-dd-tab .dropdown-tag svg {
+    transform: rotate(180deg);
+  }
+  .active-dd-tab .dropdown-tag svg path {
+    fill: #0473C2;
+  }
+}
+
+/* Ensure Swiper elements are correctly styled */
+.swiper-wrapper {
+  display: flex; /* Ensure slides are in a row */
+}
+
+.swiper-slide {
+  flex-shrink: 0; /* Prevent slides from shrinking */
+  width: 100%; /* Make each slide take up full width */
+}
+
+.videoplayed video {
+  opacity: 1 !important;
+  z-index: 10;
+}
+.videoplayed .playvideo {
+  opacity: 0;
+}
+
+.industry-option {
+  display: flex;
+  padding: 6px 8px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  width: 100%;
+  border-radius: 6px;
+  transition: all ease 0.3s;
+}
+.industry-option:hover {
+  background: #f4f4f5;
+}
+
+#industry-search-results:not(:empty),
+#address-search-results:not(:empty) {
+  display: block;
+}
+#industry-search-results,
+#address-search-results {
+  display: none;
+}
